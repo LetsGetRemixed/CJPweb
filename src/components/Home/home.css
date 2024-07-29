@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: white;
+    padding-top: 70px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+:root {
+    --code-green: #79ff5b; /* Green */
+    --code-blue: #74cdf7;  /* Blue */
+    --code-orange: #fcbf5c; /* Orange */
+    --background-dark: #232323; /* Dark background for sections */
+    --text-highlight: #ffffff; /* White text for highlights */
+}
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-section {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--background-dark);
+}
+
+.code-background {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 0;
+    left: 0px;
+    overflow: hidden;
+    opacity: 0.1; /* Adjust the opacity to make the background less intrusive */
+    z-index: 0;
+}
+
+.scrolling-code {
+    white-space: pre;
+    font-size: 1.5em;
+    color: var(--code-green);
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+.company-title {
+    font-size: 4em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.company-logo {
+    width: 200px;
+    height: 200px;
+    margin-right: 5px;
+    align-items:center;
+}
+
+
+
+
+.advertisement-hook {
+    padding: 40px 20px;
+    
+    background-color: var(--background-dark);
+}
+
+.code-text {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.ad-hook-first {
+    display: block;
+    font-size: 1.5em;
+    color: var(--text-highlight);
+    margin-bottom: 20px;
+    animation: changeColor 10s infinite;
+}
+
+@keyframes changeColor {
+    0%, 100% { color: var(--code-orange); }
+    33% { color: var(--code-green); }
+    66% { color: var(--code-blue); }
+}
+
+.code-variable {
+    color: var(--code-blue); /* Blue */
+}
+
+.code-function {
+    color: var(--code-green); /* Green */
+}
+
+.code-keyword {
+    color: var(--code-orange); /* Orange */
+}
+
+.contact-section {
+    padding: 20px;
+    background-color: var(--background-dark);
+}
+
+.contact-button {
+    background-color: var(--code-green);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #61ea63;
+}
