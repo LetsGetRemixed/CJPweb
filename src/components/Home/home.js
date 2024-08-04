@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar/navbar';
+import Footer from '../Navbar/footer';
 import emailjs from 'emailjs-com';
 import { FaPaintBrush, FaMobileAlt, FaRocket, FaHandsHelping } from 'react-icons/fa';
+import useScrollToHash from './useScrollToHash';
 
 function Home() {
+    useScrollToHash();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
@@ -46,10 +50,23 @@ function Home() {
     };
 
     return (
-        <div className="bg-background-dark font-code text-white pt-16 min-h-screen">
+        <div className="bg-background-dark font-code text-white pt-32 min-h-screen">
             <Navbar />
-            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:mt-16">
-                <div className="w-full md:w-1/2 bg-background-dark rounded-lg shadow-lg p-6 my-4 md:my-0 relative md:pt-8">
+            <div className="w-full bg-background-dark text-center py-12 px-4 md:px-8">
+                <img src="imagelogo2.png" alt="Company Logo" className="mx-auto w-32 h-32 md:w-96 md:h-96 mb-6" />
+                <h1 className="font-code text-4xl md:text-6xl text-white mb-4">CJP Web Development</h1>
+                <p className="font-code text-xl md:text-2xl mb-2 text-center  pb-5 border-b-4">
+                        <span className="text-code-orange">Coding</span> 
+                        <span className="text-code-blue"> Digital Excellence</span>, 
+                        <span className="text-code-orange"> One Line </span> 
+                                 at a 
+                        <span className="text-code-green"> Time</span>.
+                </p>
+
+            </div>
+
+            <div className="container mx-auto px-4 pb-10 flex flex-col md:flex-row justify-between items-start md:mt-16">
+                <div className="w-full md:w-1/2 bg-background-dark rounded-lg p-6 my-4 md:my-0 relative md:pt-8 flex">
                     <div className="absolute inset-0 flex justify-center items-center overflow-hidden opacity-10">
                         <div className="whitespace-pre text-code-green text-lg leading-relaxed animate-scroll text-center">
                             {`function exampleFunction() {
@@ -88,7 +105,7 @@ if (true) {
                         </div>
                     </div>
                     <section className=" relative z-10">
-                     <h2 className="font-heading text-3xl font-bold text-code-orange mb-6 text-center">
+                     <h2 className="font-code text-4xl text-code-orange mb-6 text-center">
                          <span>Why Choose</span>
                              <br />
                             <span className="text-code-blue">CJP Web Development?</span>
@@ -117,7 +134,8 @@ if (true) {
                         </ul>
                     </section>
                 </div>
-                <div className="w-full md:w-1/2 bg-gray-900 rounded-lg shadow-lg p-6 my-4 md:my-0 md:pt-8">
+                
+                <div id="contact-us" className="w-full md:w-1/2 bg-gray-900 rounded-lg shadow-lg p-6 my-4 md:my-0 md:pt-8">
                     <footer>
                         <form className="flex flex-col items-center" onSubmit={handleSubmit}>
                             <h2 className="font-heading text-2xl font-bold text-code-orange mb-4">Contact Us</h2>
@@ -164,7 +182,7 @@ if (true) {
                                 required 
                                 className="w-full max-w-lg p-2 mb-4 text-gray-900 border-2 border-code-orange rounded"
                             />
-                            <button type="submit" className="bg-code-orange text-white py-2 px-4 rounded-full hover:bg-green-500 transition-colors">
+                            <button type="submit" className="bg-code-orange md:pr-10 md:pl-10 text-white py-2 px-4 rounded-full hover:bg-green-500 transition-colors">
                                 Send
                             </button>
                         </form>
@@ -176,6 +194,7 @@ if (true) {
                     </footer>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }
