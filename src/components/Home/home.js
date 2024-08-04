@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './home.css';
 import Navbar from '../Navbar/navbar';
 import emailjs from 'emailjs-com';
+import { FaPaintBrush, FaMobileAlt, FaRocket, FaHandsHelping } from 'react-icons/fa';
 
 function Home() {
     const [name, setName] = useState('');
@@ -26,7 +26,6 @@ function Home() {
                 setFeedbackMessage("We have received your email! Our team will reach out to you soon!");
                 setFeedbackClass('success');
 
-                // Send auto-reply to the user
                 const autoReplyParams = {
                     to_email: email,
                 };
@@ -47,15 +46,13 @@ function Home() {
     };
 
     return (
-        <div className="home-container">
+        <div className="bg-background-dark font-code text-white pt-16 min-h-screen">
             <Navbar />
-            <div className="content-wrapper">
-                <div className="left-content box-container">
-                    <header className="hero-section">
-                        <div className="code-background">
-                            <div className="scrolling-code">
-                                <pre>
-{`function exampleFunction() {
+            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:mt-16">
+                <div className="w-full md:w-1/2 bg-background-dark rounded-lg shadow-lg p-6 my-4 md:my-0 relative md:pt-8">
+                    <div className="absolute inset-0 flex justify-center items-center overflow-hidden opacity-10">
+                        <div className="whitespace-pre text-code-green text-lg leading-relaxed animate-scroll text-center">
+                            {`function exampleFunction() {
     const message = "Hello, World!";
     console.log(message);
 }
@@ -75,23 +72,59 @@ if (true) {
 
 while (false) {
     console.log("This will never log");
+}
+exampleFunction();
+
+const add = (a, b) => a + b;
+console.log(add(5, 3));
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+if (true) {
+    console.log("This is true");
 }`}
-                                </pre>
-                            </div>
                         </div>
-                        <section className="advertisement-hook">
-                            <p className="code-text">
-                                <span className="ad-hook-first">Unleash Your Online Potential with CJP Web Development!</span>
-                                Whether you’re a <span className="code-variable">business owner</span> looking to <span className="code-function">expand your reach</span>, a <span className="code-variable">professional</span> aiming to <span className="code-function">showcase your portfolio</span>, or someone with a <span className="code-variable">passion project</span>, <span className="code-keyword">CJP Web Development</span> has got you covered. We specialize in <span className="code-function">creating stunning</span>, <span className="code-keyword">user-friendly websites</span> tailored to your <span className="code-variable">unique needs</span>.
-                            </p>
-                        </section>
-                    </header>
+                    </div>
+                    <section className=" relative z-10">
+                     <h2 className="font-heading text-3xl font-bold text-code-orange mb-6 text-center">
+                         <span>Why Choose</span>
+                             <br />
+                            <span className="text-code-blue">CJP Web Development?</span>
+                     </h2>
+                        <ul className="space-y-6 text-center">
+                            <li className="flex flex-col items-center text-lg">
+                                <FaPaintBrush className="text-code-orange mb-2 text-6xl md:text-4xl animate-bounce" />
+                                <span className="text-code-green font-heading text-2xl pb-5">Custom Designs:</span> 
+                                <span>We bring your vision to life with bespoke designs that stand out.</span>
+                            </li>
+                            <li className="flex flex-col items-center text-lg">
+                                <FaMobileAlt className="text-code-green mb-2 text-6xl md:text-4xl animate-pulse" />
+                                <span className="text-code-blue font-heading text-2xl pb-5">Responsive & Mobile-Friendly:</span> 
+                                <span>Your site will look great on any device, ensuring a seamless experience for your audience.</span>
+                            </li>
+                            <li className="flex flex-col items-center text-lg">
+                                <FaRocket className="text-code-blue mb-2 text-6xl md:text-4xl animate-bounce" />
+                                <span className="text-code-orange font-heading text-2xl pb-5">Fast Turnaround:</span> 
+                                <span>We respect your time and deliver high-quality websites promptly.</span>
+                            </li>
+                            <li className="flex flex-col items-center text-lg ">
+                                <FaHandsHelping className="text-code-orange mb-2 text-6xl md:text-4xl animate-pulse" />
+                                <span className="text-code-green font-heading text-2xl pb-5">Ongoing Support:</span> 
+                                <span>From updates to troubleshooting, we’re here to help long after your site goes live.</span>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
-                <div className="right-content box-container">
-                    <footer className="contact-section">
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <h2>Contact Us</h2>
-                            <label htmlFor="name">Name:</label>
+                <div className="w-full md:w-1/2 bg-gray-900 rounded-lg shadow-lg p-6 my-4 md:my-0 md:pt-8">
+                    <footer>
+                        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+                            <h2 className="font-heading text-2xl font-bold text-code-orange mb-4">Contact Us</h2>
+                                <h3 className="font-heading text-xl text-white mb-4 text-center">
+                                    Send us a <span className="text-code-blue">message</span> regarding your <span className="text-code-orange">desired project</span> and we will reach out to you <span className="text-code-green">soon </span> with a <span className="text-code-green">quote</span>!
+                                </h3>
+                            <label htmlFor="name" className="w-full max-w-lg text-left mb-2">Name:</label>
                             <input 
                                 type="text" 
                                 id="name" 
@@ -99,8 +132,9 @@ while (false) {
                                 value={name} 
                                 onChange={(e) => setName(e.target.value)} 
                                 required 
+                                className="w-full max-w-lg p-2 mb-4 text-gray-900 border-2 border-code-orange rounded"
                             />
-                            <label htmlFor="email">Email:</label>
+                            <label htmlFor="email" className="w-full max-w-lg text-left mb-2">Email:</label>
                             <input 
                                 type="email" 
                                 id="email" 
@@ -108,8 +142,9 @@ while (false) {
                                 value={email} 
                                 onChange={(e) => setEmail(e.target.value)} 
                                 required 
+                                className="w-full max-w-lg p-2 mb-4 text-gray-900 border-2 border-code-orange rounded"
                             />
-                            <label htmlFor="subject">Subject:</label>
+                            <label htmlFor="subject" className="w-full max-w-lg text-left mb-2">Subject:</label>
                             <input 
                                 type="text" 
                                 id="subject" 
@@ -117,8 +152,9 @@ while (false) {
                                 value={subject} 
                                 onChange={(e) => setSubject(e.target.value)} 
                                 required 
+                                className="w-full max-w-lg p-2 mb-4 text-gray-900 border-2 border-code-orange rounded"
                             />
-                            <label htmlFor="message">Message:</label>
+                            <label htmlFor="message" className="w-full max-w-lg text-left mb-2">Message:</label>
                             <textarea 
                                 id="message" 
                                 name="message" 
@@ -126,11 +162,14 @@ while (false) {
                                 value={message} 
                                 onChange={(e) => setMessage(e.target.value)} 
                                 required 
+                                className="w-full max-w-lg p-2 mb-4 text-gray-900 border-2 border-code-orange rounded"
                             />
-                            <button type="submit" className="contact-button">Send</button>
+                            <button type="submit" className="bg-code-orange text-white py-2 px-4 rounded-full hover:bg-green-500 transition-colors">
+                                Send
+                            </button>
                         </form>
                         {feedbackMessage && (
-                            <div className={`feedback-message ${feedbackClass}`}>
+                            <div className={`mt-4 p-4 rounded ${feedbackClass === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                                 {feedbackMessage}
                             </div>
                         )}
@@ -142,4 +181,3 @@ while (false) {
 }
 
 export default Home;
-
