@@ -128,11 +128,11 @@ if (true) {
 }`}
             </div>
           </div>
-          <section className="relative z-10">
-            <h2 className="mb-6 text-center font-code text-4xl text-code-orange">
+          <section className="relative z-10 w-full">
+            <h2 className="mb-6 text-center font-code text-3xl text-code-orange">
               <span>Why Choose</span>
               <br />
-              <span className="text-code-blue">CJP Web Development?</span>
+              <span className="text-code-blue">CJP Web Development? </span>
             </h2>
             <ul className="space-y-6 text-center">
               <li className="flex flex-col items-center text-lg">
