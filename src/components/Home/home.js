@@ -1,61 +1,100 @@
-import React, { useState } from 'react';
-import './home.css';
-import Navbar from '../Navbar/navbar';
-import emailjs from 'emailjs-com';
+import React, { useState } from "react";
+import Navbar from "../Navbar/navbar";
+import Footer from "../Navbar/footer";
+import emailjs from "emailjs-com";
+import {
+  FaPaintBrush,
+  FaMobileAlt,
+  FaRocket,
+  FaHandsHelping,
+} from "react-icons/fa";
+import useScrollToHash from "./useScrollToHash";
 
 function Home() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [subject, setSubject] = useState('');
-    const [message, setMessage] = useState('');
-    const [feedbackMessage, setFeedbackMessage] = useState('');
-    const [feedbackClass, setFeedbackClass] = useState('');
+  useScrollToHash();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [feedbackClass, setFeedbackClass] = useState("");
 
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            subject: subject,
-            message: message,
-        };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        emailjs.send('service_41qai17', 'template_h5ukevk', templateParams, 'mwniZb_WhkSrA4QZs')
-            .then((response) => {
-                setFeedbackMessage("We have received your email! Our team will reach out to you soon!");
-                setFeedbackClass('success');
-
-                // Send auto-reply to the user
-                const autoReplyParams = {
-                    to_email: email,
-                };
-                return emailjs.send('service_41qai17', 'template_8ujh77c', autoReplyParams, 'mwniZb_WhkSrA4QZs');
-            })
-            .then((response) => {
-                console.log('Auto-reply sent to the user!');
-            })
-            .catch((error) => {
-                setFeedbackMessage("There was an error sending your message, please try again in a moment.");
-                setFeedbackClass('error');
-            });
-
-        setName('');
-        setEmail('');
-        setSubject('');
-        setMessage('');
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      subject: subject,
+      message: message,
     };
 
-    return (
-        <div className="home-container">
-            <Navbar />
-            <div className="content-wrapper">
-                <div className="left-content box-container">
-                    <header className="hero-section">
-                        <div className="code-background">
-                            <div className="scrolling-code">
-                                <pre>
-{`function exampleFunction() {
+    emailjs
+      .send(
+        "service_41qai17",
+        "template_h5ukevk",
+        templateParams,
+        "mwniZb_WhkSrA4QZs",
+      )
+      .then((response) => {
+        setFeedbackMessage(
+          "We have received your email! Our team will reach out to you soon!",
+        );
+        setFeedbackClass("success");
+
+        const autoReplyParams = {
+          to_email: email,
+        };
+        return emailjs.send(
+          "service_41qai17",
+          "template_8ujh77c",
+          autoReplyParams,
+          "mwniZb_WhkSrA4QZs",
+        );
+      })
+      .then((response) => {
+        console.log("Auto-reply sent to the user!");
+      })
+      .catch((error) => {
+        setFeedbackMessage(
+          "There was an error sending your message, please try again in a moment.",
+        );
+        setFeedbackClass("error");
+      });
+
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
+
+  return (
+    <div>
+      <Navbar />
+    <div className="min-h-screen bg-background-dark pt-8 font-code text-white">
+            <div className="w-full bg-background-dark px-4 py-12 text-center md:px-8">
+        <img
+          src="imagelogo2.png"
+          alt="Company Logo"
+          className="mx-auto mb-6 h-32 w-32 md:h-72 md:w-72"
+        />
+        <h1 className="mb-4 font-code text-4xl text-white md:text-5xl pb-5">
+          Let Us Develop Your Website Today!
+        </h1>
+        <p className="mb-2 border-b-4 pb-10 text-center font-code text-xl md:text-2xl">
+          <span className="text-code-orange">Coding</span>
+          <span className="text-code-blue"> Digital Excellence</span>,
+          <span className="text-code-orange"> One Line </span>
+          at a<span className="text-code-green"> Time</span>.
+        </p>
+              </div>
+
+      <div className="container mx-auto flex flex-col items-start justify-between px-4 pb-10 md:mt-16 md:flex-row">
+        <div className="relative my-4 flex w-full rounded-lg bg-background-dark p-6 md:my-0 md:w-1/2 md:pt-8">
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-10">
+            <div className="animate-scroll whitespace-pre text-center text-lg leading-relaxed text-code-green">
+              {`function exampleFunction() {
     const message = "Hello, World!";
     console.log(message);
 }
@@ -75,71 +114,167 @@ if (true) {
 
 while (false) {
     console.log("This will never log");
+}
+exampleFunction();
+
+const add = (a, b) => a + b;
+console.log(add(5, 3));
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+if (true) {
+    console.log("This is true");
 }`}
-                                </pre>
-                            </div>
-                        </div>
-                        <section className="advertisement-hook">
-                            <p className="code-text">
-                                <span className="ad-hook-first">Unleash Your Online Potential with CJP Web Development!</span>
-                                Whether you’re a <span className="code-variable">business owner</span> looking to <span className="code-function">expand your reach</span>, a <span className="code-variable">professional</span> aiming to <span className="code-function">showcase your portfolio</span>, or someone with a <span className="code-variable">passion project</span>, <span className="code-keyword">CJP Web Development</span> has got you covered. We specialize in <span className="code-function">creating stunning</span>, <span className="code-keyword">user-friendly websites</span> tailored to your <span className="code-variable">unique needs</span>.
-                            </p>
-                        </section>
-                    </header>
-                </div>
-                <div className="right-content box-container">
-                    <footer className="contact-section">
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <h2>Contact Us</h2>
-                            <label htmlFor="name">Name:</label>
-                            <input 
-                                type="text" 
-                                id="name" 
-                                name="name" 
-                                value={name} 
-                                onChange={(e) => setName(e.target.value)} 
-                                required 
-                            />
-                            <label htmlFor="email">Email:</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                required 
-                            />
-                            <label htmlFor="subject">Subject:</label>
-                            <input 
-                                type="text" 
-                                id="subject" 
-                                name="subject" 
-                                value={subject} 
-                                onChange={(e) => setSubject(e.target.value)} 
-                                required 
-                            />
-                            <label htmlFor="message">Message:</label>
-                            <textarea 
-                                id="message" 
-                                name="message" 
-                                rows="5" 
-                                value={message} 
-                                onChange={(e) => setMessage(e.target.value)} 
-                                required 
-                            />
-                            <button type="submit" className="contact-button">Send</button>
-                        </form>
-                        {feedbackMessage && (
-                            <div className={`feedback-message ${feedbackClass}`}>
-                                {feedbackMessage}
-                            </div>
-                        )}
-                    </footer>
-                </div>
             </div>
+          </div>
+          <section className="relative z-10 w-full">
+            <h2 className="mb-6 text-center font-code text-3xl text-code-orange">
+              <span>Why Choose</span>
+              <br />
+              <span className="text-code-blue">CJP Web Development? </span>
+            </h2>
+            <ul className="space-y-6 text-center">
+              <li className="flex flex-col items-center text-lg">
+                <FaPaintBrush className="mb-2 animate-bounce text-6xl text-code-orange md:text-4xl" />
+                <span className="pb-5 font-heading text-2xl text-code-green">
+                  Custom Designs:
+                </span>
+                <span>
+                  We bring your vision to life with bespoke designs that stand
+                  out.
+                </span>
+              </li>
+              <li className="flex flex-col items-center text-lg">
+                <FaMobileAlt className="mb-2 animate-pulse text-6xl text-code-green md:text-4xl" />
+                <span className="pb-5 font-heading text-2xl text-code-blue">
+                  Responsive & Mobile-Friendly:
+                </span>
+                <span>
+                  Your site will look great on any device, ensuring a seamless
+                  experience for your audience.
+                </span>
+              </li>
+              <li className="flex flex-col items-center text-lg">
+                <FaRocket className="mb-2 animate-bounce text-6xl text-code-blue md:text-4xl" />
+                <span className="pb-5 font-heading text-2xl text-code-orange">
+                  Fast Turnaround:
+                </span>
+                <span>
+                  We respect your time and deliver high-quality websites
+                  promptly.
+                </span>
+              </li>
+              <li className="flex flex-col items-center text-lg">
+                <FaHandsHelping className="mb-2 animate-pulse text-6xl text-code-orange md:text-4xl" />
+                <span className="pb-5 font-heading text-2xl text-code-green">
+                  Ongoing Support:
+                </span>
+                <span>
+                  From updates to troubleshooting, we’re here to help long after
+                  your site goes live.
+                </span>
+              </li>
+            </ul>
+          </section>
         </div>
-    );
+
+        <div
+          id="contact-us"
+          className="my-4 w-full rounded-lg bg-gray-900 p-6 shadow-lg md:my-0 md:w-1/2 md:pt-8"
+        >
+          <footer>
+            <form
+              className="flex flex-col items-center"
+              onSubmit={handleSubmit}
+            >
+              <h2 className="mb-4 font-heading text-2xl font-bold text-code-orange">
+                Contact Us
+              </h2>
+              <h3 className="mb-4 text-center font-heading text-xl text-white">
+                Send us a <span className="text-code-blue">message</span>{" "}
+                regarding your{" "}
+                <span className="text-code-orange">desired project</span> and we
+                will reach out to you{" "}
+                <span className="text-code-green">soon </span> for a{" "}
+                <span className="text-code-green">consultation</span>!
+              </h3>
+              <label htmlFor="name" className="mb-2 w-full max-w-lg text-left">
+                Name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
+              />
+              <label htmlFor="email" className="mb-2 w-full max-w-lg text-left">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
+              />
+              <label
+                htmlFor="subject"
+                className="mb-2 w-full max-w-lg text-left"
+              >
+                Subject:
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                required
+                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
+              />
+              <label
+                htmlFor="message"
+                className="mb-2 w-full max-w-lg text-left"
+              >
+                Message:
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-code-orange px-4 py-2 text-white transition-colors hover:bg-green-500 md:pl-10 md:pr-10"
+              >
+                Send
+              </button>
+            </form>
+            {feedbackMessage && (
+              <div
+                className={`mt-4 rounded p-4 ${feedbackClass === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}
+              >
+                {feedbackMessage}
+              </div>
+            )}
+          </footer>
+        </div>
+      </div>
+         <Footer></Footer>
+    </div>
+    </div>
+  );
 }
 
 export default Home;
-
