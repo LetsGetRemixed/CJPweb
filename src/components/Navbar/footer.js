@@ -22,10 +22,10 @@ function Footer() {
                 📧
               </span>
               <a
-                href="mailto:your-email@example.com"
+                href="mailto:colbyperson@CJPWeb.com"
                 className="text-white transition-colors hover:text-gray-400"
               >
-                colbyperson@CJPWebDev.com
+                colbyperson@CJPWeb.com
               </a>
             </div>
             <div className="flex items-center">
