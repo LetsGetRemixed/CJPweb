@@ -37,5 +37,5 @@ jobs:
         
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CJPWEB_2AC3B }}
         
