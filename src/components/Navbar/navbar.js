@@ -28,7 +28,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="fixed left-0 top-0 z-[1000] flex w-full items-center justify-between bg-gray-900 p-4 shadow-md">
+    <nav className=" left-0 top-0 z-[1000] flex w-full items-center justify-between bg-gray-900 p-4 shadow-md">
       <div key="home" className="flex items-center text-xl text-white">
         <NavLink
           to="/"
@@ -44,7 +44,7 @@ function Navbar() {
         </NavLink>
       </div>
       <div
-        className="flex cursor-pointer flex-col md:hidden"
+        className="flex cursor-pointer flex-col pl-2 md:hidden"
         onClick={toggleMenu}
       >
         <span
@@ -86,7 +86,10 @@ function Navbar() {
             to="/#contact-us"
             className="block py-4 text-lg text-white hover:text-code-orange"
             activeClassName="text-code-orange"
-            onClick={() => handleNavLinkClick("#contact-us")}
+            onClick={() => {handleNavLinkClick("#contact-us");
+              setIsOpen(false);
+            }}
+            
           >
             Contact Us
           </NavLink>

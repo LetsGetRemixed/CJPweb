@@ -70,24 +70,25 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background-dark pt-32 font-code text-white">
+    <div>
       <Navbar />
-      <div className="w-full bg-background-dark px-4 py-12 text-center md:px-8">
+    <div className="min-h-screen bg-background-dark pt-8 font-code text-white">
+            <div className="w-full bg-background-dark px-4 py-12 text-center md:px-8">
         <img
           src="imagelogo2.png"
           alt="Company Logo"
-          className="mx-auto mb-6 h-32 w-32 md:h-96 md:w-96"
+          className="mx-auto mb-6 h-32 w-32 md:h-72 md:w-72"
         />
-        <h1 className="mb-4 font-code text-4xl text-white md:text-6xl">
-          CJP Web Development
+        <h1 className="mb-4 font-code text-4xl text-white md:text-5xl pb-5">
+          Let Us Develop Your Website Today!
         </h1>
-        <p className="mb-2 border-b-4 pb-5 text-center font-code text-xl md:text-2xl">
+        <p className="mb-2 border-b-4 pb-10 text-center font-code text-xl md:text-2xl">
           <span className="text-code-orange">Coding</span>
           <span className="text-code-blue"> Digital Excellence</span>,
           <span className="text-code-orange"> One Line </span>
           at a<span className="text-code-green"> Time</span>.
         </p>
-      </div>
+              </div>
 
       <div className="container mx-auto flex flex-col items-start justify-between px-4 pb-10 md:mt-16 md:flex-row">
         <div className="relative my-4 flex w-full rounded-lg bg-background-dark p-6 md:my-0 md:w-1/2 md:pt-8">
@@ -196,8 +197,8 @@ if (true) {
                 regarding your{" "}
                 <span className="text-code-orange">desired project</span> and we
                 will reach out to you{" "}
-                <span className="text-code-green">soon </span> with a{" "}
-                <span className="text-code-green">quote</span>!
+                <span className="text-code-green">soon </span> for a{" "}
+                <span className="text-code-green">consultation</span>!
               </h3>
               <label htmlFor="name" className="mb-2 w-full max-w-lg text-left">
                 Name:
@@ -270,7 +271,8 @@ if (true) {
           </footer>
         </div>
       </div>
-      <Footer></Footer>
+         <Footer></Footer>
+    </div>
     </div>
   );
 }
