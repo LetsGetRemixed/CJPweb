@@ -37,6 +37,7 @@ jobs:
 
       - name: List Build Directory (for debugging)
         run: ls -la
+        working-directory: /build
         
 
       - name: Deploy to Firebase Hosting for Preview
