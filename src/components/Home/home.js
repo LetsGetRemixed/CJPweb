@@ -45,6 +45,7 @@ function Home() {
 
         const autoReplyParams = {
           to_email: email,
+          to_name: name,
         };
         return emailjs.send(
           "service_41qai17",
