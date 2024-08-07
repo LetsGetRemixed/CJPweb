@@ -28,7 +28,7 @@ function Navbar() {
   };
 
   return (
-    <nav className=" left-0 top-0 z-[1000] flex w-full items-center justify-between bg-gray-900 p-4 shadow-md">
+    <nav className=" left-0 top-0 z-[1000] flex w-full items-center justify-between bg-gray-900 p-4 pb-6 shadow-md">
       <div key="home" className="flex items-center text-xl text-white">
         <NavLink
           to="/"
@@ -58,8 +58,10 @@ function Navbar() {
         ></span>
       </div>
       <ul
-        className={`fixed left-0 w-full transform space-y-4 bg-gray-900 text-center transition-transform duration-300 ease-in-out ${isOpen ? "top-16 translate-y-2 opacity-100" : "top-0 -translate-y-full opacity-0"} md:relative md:right-0 md:top-0 md:flex md:translate-y-0 md:items-center md:justify-end md:space-x-24 md:space-y-0 md:bg-transparent md:opacity-100`}
-      >
+          className={`absolute left-0 w-full transform space-y-4 bg-gray-900 text-center transition-transform duration-300 ease-in-out ${
+            isOpen ? "top-20 translate-y-0 opacity-100" : "top-0 -translate-y-full opacity-0"
+          } md:relative md:right-0 md:top-0 md:flex md:translate-y-0 md:items-center md:justify-end md:space-x-24 md:space-y-0 md:bg-transparent md:opacity-100`}
+        >
         <li>
           <NavLink
             to="/construction" // Adjust the link for the Showcase section
@@ -71,16 +73,7 @@ function Navbar() {
             Showcase
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/construction" // Adjust the link for the Meet the Team section
-            className="block py-4 text-lg text-white hover:text-code-orange"
-            activeClassName="text-code-orange"
-            onClick={() => handleNavLinkClick("#meet-the-team")}
-          >
-            Meet the Team
-          </NavLink>
-        </li>
+        
         <li key="contact">
           <NavLink
             to="/#contact-us"

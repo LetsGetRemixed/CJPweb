@@ -211,6 +211,7 @@ if (true) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                placeholder="Chuck Norris"
                 className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
               />
               <label htmlFor="email" className="mb-2 w-full max-w-lg text-left">
@@ -223,6 +224,7 @@ if (true) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                placeholder="example@email.com"
                 className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
               />
               <label
@@ -238,6 +240,8 @@ if (true) {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 required
+                placeholder="Subject for the email"
+                
                 className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
               />
               <label
@@ -253,6 +257,7 @@ if (true) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
+                placeholder="Describe in detail the project you would like."
                 className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
               />
               <button
