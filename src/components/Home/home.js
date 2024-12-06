@@ -9,24 +9,25 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 import useScrollToHash from "./useScrollToHash";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Home() {
   useScrollToHash();
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] =useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackClass, setFeedbackClass] = useState("");
-  const [isHuman, setIsHuman] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isHuman) {
+    if (!captchaVerified) {
       setFeedbackMessage(
-        "Please confirm you are not a robot by checking the box."
+        "Please confirm you are not a robot by completing the CAPTCHA."
       );
       setFeedbackClass("error");
       return;
@@ -77,7 +78,13 @@ function Home() {
     setEmail("");
     setSubject("");
     setMessage("");
-    setIsHuman(false);
+    setCaptchaVerified(false);
+  };
+
+  const handleCaptchaChange = (value) => {
+    if (value) {
+      setCaptchaVerified(true);
+    }
   };
 
   return (
@@ -270,15 +277,10 @@ if (true) {
                 className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
               />
               <div className="mb-4 w-full max-w-lg">
-                <input
-                  type="checkbox"
-                  id="humanCheck"
-                  name="humanCheck"
-                  checked={isHuman}
-                  onChange={(e) => setIsHuman(e.target.checked)}
-                  className="mr-2"
+                <ReCAPTCHA
+                  sitekey='6LdYtZMqAAAAAHTxn9W5HuNRp96TgXFuo79CCLeH' // Replace with your reCAPTCHA site key
+                  onChange={handleCaptchaChange}
                 />
-                <label htmlFor="humanCheck">I am not a robot</label>
               </div>
               <button
                 type="submit"
@@ -304,4 +306,5 @@ if (true) {
 }
 
 export default Home;
+
 
