@@ -23,7 +23,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        
+
+      - name: Install Functions Dependencies
+        run: |
+          cd functions
+          npm install
+          cd ..
 
       - name: Build Project
         run: npm run build
@@ -38,5 +43,5 @@ jobs:
         
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting,functions --token ${{ secrets.FIREBASE_TOKEN }}
         
