@@ -28,7 +28,7 @@ function Footer() {
                 colbyperson@CJPWeb.com
               </a>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center md:mr-6">
               <span role="img" aria-label="phone" className="mr-2">
                 📞
               </span>
@@ -39,10 +39,21 @@ function Footer() {
                 +1 (512) 786-5133
               </a>
             </div>
+            {/* Employee Login Link */}
+            <div className="mt-4 md:mt-0">
+              <a
+                href="/login"
+                className="text-white transition-colors hover:text-gray-400"
+              >
+                Employee Login
+              </a>
+            </div>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+
 export default Footer;
+
