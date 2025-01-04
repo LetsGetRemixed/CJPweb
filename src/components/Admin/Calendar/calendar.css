@@ -1,0 +1,66 @@
+/* Override react-calendar styles to match theme */
+.react-calendar {
+    font-size: 1.2rem; /* Make text larger */
+    width: 600px; /* Increase calendar size */
+    max-width: 100%;
+    background-color: #2d3748;
+    border-radius: 8px;
+    border: none;
+    color: white;
+  }
+  
+  .react-calendar__navigation button {
+    color: #f6ad55; /* Code-orange for navigation buttons */
+    background: none;
+    font-weight: bold;
+  }
+  
+  .react-calendar__tile {
+    height: 70px; /* Make tiles larger */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .react-calendar__tile--active {
+    background-color: #38a169; /* Highlight selected date */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .react-calendar__tile--hover {
+    background-color: #4a5568;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    color: #f6ad55; /* Code-orange for weekdays */
+    font-weight: bold;
+  }
+  
+  .calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .react-calendar__tile--now {
+    background-color: lightslategray; /* Current style */
+    color: black;
+  }
+
+  .react-calendar__tile--weekend {
+    color: white; /* Reset to default text color */
+  }
+
+  .weekend-text {
+    color: inherit; /* Reset weekend text color */
+  }
+  
+
+  
+ 
+  
+  

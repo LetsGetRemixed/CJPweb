@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaUser, FaDollarSign, FaGlobe, FaTasks, FaCalendarAlt, FaFolderOpen, FaClock, FaList } from "react-icons/fa";
+import { FaUser, FaDollarSign, FaGlobe, FaTasks, FaCalendarAlt, FaFolderOpen, FaClock, FaList, FaStar } from "react-icons/fa";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -10,6 +10,7 @@ const Sidebar = () => {
   };
 
   const menuItems = [
+    { name: "Dashboard", path: "/dashboard", icon: <FaStar /> },
     { name: "Client Info", path: "/client-info", icon: <FaUser /> },
     { name: "Profit Page", path: "/profit-page", icon: <FaDollarSign /> },
     { name: "Company Websites", path: "/company-websites", icon: <FaGlobe /> },
@@ -38,7 +39,7 @@ const Sidebar = () => {
       </button>
 
       {/* Sidebar Content */}
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col font-code h-full">
         {/* Sidebar Header */}
         <div className="flex items-center justify-center py-6 border-b border-gray-700">
           <img
