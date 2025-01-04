@@ -21,6 +21,7 @@ const useLogin = () => {
     // Clear the token from localStorage and update authentication state
     localStorage.removeItem("authToken");
     setIsAuthenticated(false);
+    window.location.href = "/";
   };
 
   return {

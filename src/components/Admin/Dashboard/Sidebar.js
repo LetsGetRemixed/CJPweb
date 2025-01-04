@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { FaUser, FaDollarSign, FaGlobe, FaTasks, FaCalendarAlt, FaFolderOpen, FaClock, FaList, FaStar } from "react-icons/fa";
+import {
+  FaUser,
+  FaDollarSign,
+  FaGlobe,
+  FaTasks,
+  FaCalendarAlt,
+  FaFolderOpen,
+  FaClock,
+  FaList,
+  FaStar,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import useLogin from "../Login/useLogin"; // Import your custom hook
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(
+    () => JSON.parse(localStorage.getItem("sidebarOpen")) ?? true
+  );
+
+  const { logout } = useLogin(); // Destructure the logout function from useLogin
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => {
+      const newState = !prev;
+      localStorage.setItem("sidebarOpen", JSON.stringify(newState));
+      return newState;
+    });
   };
 
   const menuItems = [
@@ -20,6 +40,10 @@ const Sidebar = () => {
     { name: "References", path: "/references", icon: <FaFolderOpen /> },
     { name: "Timepunch", path: "/timepunch", icon: <FaClock /> },
   ];
+
+  useEffect(() => {
+    localStorage.setItem("sidebarOpen", JSON.stringify(isOpen));
+  }, [isOpen]);
 
   return (
     <div
@@ -75,12 +99,25 @@ const Sidebar = () => {
             </NavLink>
           ))}
         </nav>
+
+        {/* Logout Button */}
+        <div className="border-t border-gray-700 mt-auto">
+          <button
+            onClick={logout}
+            className="flex items-center gap-4 w-full px-6 py-3 text-sm font-medium text-left transition-colors hover:bg-gray-700 hover:text-red-500"
+          >
+            <FaSignOutAlt className="text-lg" />
+            {isOpen && <span>Logout</span>}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Sidebar;
+
+
 
 
 
