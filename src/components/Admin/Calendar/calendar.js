@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import axios from "axios";
 import "./calendar.css"; // Custom styles to match your theme
 import Sidebar from "../Dashboard/Sidebar";
 
@@ -14,66 +15,92 @@ const CalendarPage = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
 
+    const API_URL = process.env.REACT_APP_API_URL;
+
+
+    useEffect(() => {
+      const fetchEvents = async () => {
+        try {
+          const response = await axios.get(API_URL);
+          setEvents(response.data);
+        } catch (err) {
+          console.error("Error fetching events:", err);
+        }
+      };
+      fetchEvents();
+    }, [API_URL]);
+
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
   };
 
-  const handleAddEvent = () => {
+
+   const handleAddEvent = async () => {
     if (eventTitle.trim()) {
-      setEvents((prevEvents) => [
-        ...prevEvents,
-        {
-          id: Date.now(),
-          date: date.toDateString(),
-          title: eventTitle.trim(),
-          description: eventDescription.trim(),
-          priority,
-        },
-      ]);
-      setEventTitle("");
-      setEventDescription("");
-      setPriority("Medium");
+      const newEvent = {
+        title: eventTitle.trim(),
+        description: eventDescription.trim(),
+        date: date.toISOString(),
+        priority,
+      };
+      try {
+        const response = await axios.post(API_URL, newEvent);
+        setEvents((prev) => [...prev, response.data]);
+        setEventTitle("");
+        setEventDescription("");
+        setPriority("Medium");
+      } catch (err) {
+        console.error("Error adding event:", err);
+      }
     }
   };
 
-  const handleDeleteEvent = (eventId) => {
-    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId));
+  const handleDeleteEvent = async (eventId) => {
+    try {
+      await axios.delete(`${API_URL}/${eventId}`);
+      setEvents((prev) => prev.filter((event) => event._id !== eventId));
+    } catch (err) {
+      console.error("Error deleting event:", err);
+    }
   };
 
   const handleEditEvent = (event) => {
-    setEditingEvent(event.id);
+    setEditingEvent(event._id);
     setEditTitle(event.title);
     setEditDescription(event.description);
   };
 
-  const handleSaveEdit = (eventId) => {
-    setEvents((prevEvents) =>
-      prevEvents.map((event) =>
-        event.id === eventId
-          ? { ...event, title: editTitle, description: editDescription }
-          : event
-      )
+  const handleSaveEdit = async (eventId) => {
+    try {
+      const updatedEvent = { title: editTitle, description: editDescription };
+      const response = await axios.put(`${API_URL}/${eventId}`, updatedEvent);
+      setEvents((prev) =>
+        prev.map((event) => (event._id === eventId ? response.data : event))
+      );
+      setEditingEvent(null);
+      setEditTitle("");
+      setEditDescription("");
+    } catch (err) {
+      console.error("Error updating event:", err);
+    }
+  };
+
+  const getEventsForDate = (selectedDate) =>
+    events.filter(
+      (event) => new Date(event.date).toDateString() === selectedDate.toDateString()
     );
-    setEditingEvent(null);
-    setEditTitle("");
-    setEditDescription("");
-  };
 
-  const getEventsForDate = (selectedDate) => {
-    return events.filter((event) => event.date === selectedDate.toDateString());
-  };
-
-  const getEventsForCurrentWeek = () => {
-    const weekStart = new Date(date);
-    weekStart.setDate(weekStart.getDate() - weekStart.getDay());
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekStart.getDate() + 6);
-
-    return events.filter((event) => {
-      const eventDate = new Date(event.date);
-      return eventDate >= weekStart && eventDate <= weekEnd;
-    });
-  };
+    const getEventsForCurrentWeek = () => {
+      const weekStart = new Date(date);
+      weekStart.setDate(weekStart.getDate() - weekStart.getDay());
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekStart.getDate() + 6);
+  
+      return events.filter((event) => {
+        const eventDate = new Date(event.date);
+        return eventDate >= weekStart && eventDate <= weekEnd;
+      });
+    };
 
   const handleGoToDate = (eventDate) => {
     setDate(new Date(eventDate));
