@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar/navbar";
 
+const { REACT_APP_ADMIN_USERNAME, REACT_APP_ADMIN_PASSWORD } = process.env;
+
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +11,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Replace with your actual authentication logic
-    if (username === "admin" && password === "password") {
+    if (username === REACT_APP_ADMIN_USERNAME && password === REACT_APP_ADMIN_PASSWORD) {
       const token = "your-auth-token"; // Mock token
       onLogin(token);
     } else {

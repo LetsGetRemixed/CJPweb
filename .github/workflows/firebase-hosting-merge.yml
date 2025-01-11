@@ -23,6 +23,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        env:
+          REACT_APP_ADMIN_USERNAME: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_ADMIN_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}
 
       - name: Install Functions Dependencies
         run: |
