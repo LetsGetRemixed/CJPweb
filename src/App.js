@@ -18,6 +18,7 @@ import CurrentTask from "./components/Admin/currentTask/currentTask";
 import Calendar from "./components/Admin/Calendar/calendar";
 import References from "./components/Admin/References/References";
 import Timepunch from "./components/Admin/TimePunch/TimePunch";
+import Showcase from "./components/Showcase/Showcase";
 
 function App() {
   const { isAuthenticated, login, logout } = useLogin();
@@ -32,6 +33,7 @@ function App() {
     <Route path="/gallery" element={<Gallery />} />
     <Route path="/team" element={<Team />} />
     <Route path="/construction" element={<Construction />} />
+    <Route path="/showcase" element={<Showcase />} />
     <Route
       path="/login"
       element={
