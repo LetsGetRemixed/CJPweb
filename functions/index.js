@@ -5,16 +5,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const calendarRoutes = require('./routes/calendarRoutes');
 
-
+const mongostring = 'mongodb+srv://Colby:colby@cjpweb.vujp6.mongodb.net/?retryWrites=true&w=majority&appName=CJPWeb'
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5100;
 
 
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(mongostring, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
