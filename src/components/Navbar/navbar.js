@@ -64,7 +64,7 @@ function Navbar() {
         >
         <li>
           <NavLink
-            to="/construction" // Adjust the link for the Showcase section
+            to="/showcase" // Adjust the link for the Showcase section
             className="block py-4 text-lg text-white hover:text-code-orange"
             activeClassName="text-code-orange"
             exact
