@@ -22,6 +22,13 @@ const showcaseData = [
     },
     {
       id: 4,
+      name: "Central Hills Lawn Service",
+      description: "A fully functional website for Central Hills Lawn Service. This site features a home, about, and contact page, as well as a fully responsive design.",
+      image: '/images/centralhills.png',
+      link: "https://centralhillslawnservices.com",
+    },
+    {
+      id: 4,
       name: "Supra Portfolio",
       description: "A beautiful and responsive portfolio website for showcasing a Supra. Complete with a viewable gallery, Instagram Plug, and Responsive designs ",
       image: '/images/ZionsSupraResponsive.png',
