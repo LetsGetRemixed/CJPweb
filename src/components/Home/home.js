@@ -10,9 +10,12 @@ import {
 } from "react-icons/fa";
 import useScrollToHash from "./useScrollToHash";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   useScrollToHash();
+
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] =useState("");
@@ -106,6 +109,12 @@ function Home() {
           <span className="text-code-orange"> One Line </span>
           at a<span className="text-code-green"> Time</span>.
         </p>
+        <button
+  onClick={() => navigate("/showcase")}
+  className="mt-6 rounded-full bg-code-orange px-6 py-3 text-lg font-semibold text-white transition duration-300 hover:bg-code-green"
+>
+  View Our Showcase
+</button>
               </div>
 
       <div className="container mx-auto flex flex-col items-start justify-between px-4 pb-10 md:mt-16 md:flex-row">

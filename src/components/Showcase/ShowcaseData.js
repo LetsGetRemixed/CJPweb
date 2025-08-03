@@ -21,6 +21,13 @@ const showcaseData = [
       link: "https://southerntechnologistgroup.com",
     },
     {
+      id: 3,
+      name: "Alyssa Gonzalez Portfolio",
+      description: "A beautiful portfolio for a communications major capturing skillset, work, and contact information",
+      image: '/images/alyssaportfolio.png',
+      link: "https://alyssajgonzalez.com",
+    },
+    {
       id: 4,
       name: "Central Hills Lawn Service",
       description: "A fully functional website for Central Hills Lawn Service. This site features a home, about, and contact page, as well as a fully responsive design.",
