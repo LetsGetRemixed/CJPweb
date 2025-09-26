@@ -15,6 +15,13 @@ const showcaseData = [
     },
     {
       id: 3,
+      name: "Bold Moves",
+      description: "A site for media and marketing, built to capture leads, manage customers,and showcase their services.",
+      image: '/images/boldmediaresponsive.png',
+      link: "https://boldmovesinc.com",
+    },
+    {
+      id: 3,
       name: "Southern Technologist Group",
       description: "A fully functional website for the Southern Technologist Group. This site features a home, about, and contact page, as well as a fully responsive design.",
       image: '/images/southerntech.png',
