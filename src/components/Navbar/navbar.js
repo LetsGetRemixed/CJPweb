@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -27,67 +28,144 @@ function Navbar() {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className=" left-0 top-0 z-[1000] flex w-full items-center justify-between bg-gray-900 p-4 pb-6 shadow-md">
-      <div key="home" className="flex items-center text-xl text-white">
-        <NavLink
-          to="/"
-          className="flex items-center"
-          onClick={() => handleNavLinkClick("/")}
-        >
-          <img
-            src="imagelogo2.png"
-            alt="Company Logo"
-            className="mr-2 h-10 w-10"
-          />
-          <span className="text-lg">CJP Web Development</span>
-        </NavLink>
-      </div>
-      <div
-        className="flex cursor-pointer flex-col pl-2 md:hidden"
-        onClick={toggleMenu}
-      >
-        <span
-          className={`my-1 block h-1 w-6 bg-white transition-transform duration-300 ${isOpen ? "translate-y-2 rotate-45 transform" : ""}`}
-        ></span>
-        <span
-          className={`my-1 block h-1 w-6 bg-white transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}
-        ></span>
-        <span
-          className={`my-1 block h-1 w-6 bg-white transition-transform duration-300 ${isOpen ? "-translate-y-2 -rotate-45 transform" : ""}`}
-        ></span>
-      </div>
-      <ul
-          className={`absolute left-0 w-full transform space-y-4 bg-gray-900 text-center transition-transform duration-300 ease-in-out ${
-            isOpen ? "top-20 translate-y-0 opacity-100" : "top-0 -translate-y-full opacity-0"
-          } md:relative md:right-0 md:top-0 md:flex md:translate-y-0 md:items-center md:justify-end md:space-x-24 md:space-y-0 md:bg-transparent md:opacity-100`}
-        >
-        <li>
-          <NavLink
-            to="/showcase" // Adjust the link for the Showcase section
-            className="block py-4 text-lg text-white hover:text-code-orange"
-            activeClassName="text-code-orange"
-            exact
-            onClick={() => handleNavLinkClick("#showcase")}
-          >
-            Showcase
-          </NavLink>
-        </li>
-        
-        <li key="contact">
-          <NavLink
-            to="/#contact-us"
-            className="block py-4 text-lg text-white hover:text-code-orange"
-            activeClassName="text-code-orange"
-            onClick={() => {handleNavLinkClick("#contact-us");
-              setIsOpen(false);
-            }}
+    <nav className={`fixed left-0 top-0 z-[1000] w-full transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800/50' 
+        : 'bg-transparent'
+    }`}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-4">
+          {/* Logo Section */}
+          <div className="flex items-center">
+            <NavLink
+              to="/"
+              className="flex items-center group transition-all duration-300 hover:scale-105"
+              onClick={() => handleNavLinkClick("/")}
+            >
+              <div className="relative">
+                <img
+                  src="imagelogo2.png"
+                  alt="Company Logo"
+                  className="mr-3 h-12 w-12 transition-all duration-300 group-hover:rotate-12"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-code-orange/20 to-code-green/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-white via-code-blue to-white bg-clip-text text-transparent group-hover:from-code-orange group-hover:via-code-green group-hover:to-code-blue transition-all duration-300">
+                CJP Web Development
+              </span>
+            </NavLink>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <NavLink
+              to="/showcase"
+              className="relative px-4 py-2 text-white font-medium transition-all duration-300 hover:text-code-orange group"
+              activeClassName="text-code-orange"
+              exact
+              onClick={() => handleNavLinkClick("#showcase")}
+            >
+              <span className="relative z-10">Showcase</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-code-orange/10 to-code-green/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-orange to-code-green group-hover:w-full transition-all duration-300"></div>
+            </NavLink>
             
+           
+
+            {/* CTA Button */}
+            <NavLink
+              to="/#contact-us"
+              className="relative px-6 py-2 bg-gradient-to-r from-code-green to-code-blue text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-code-green/25 group"
+              onClick={() => {
+                handleNavLinkClick("#contact-us");
+                setIsOpen(false);
+              }}
+            >
+              <span className="relative z-10">Get Started</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-code-orange to-code-green rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </NavLink>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div
+            className="md:hidden relative z-50"
+            onClick={toggleMenu}
           >
-            Contact Us
-          </NavLink>
-        </li>
-      </ul>
+            <div className="flex flex-col items-center justify-center w-8 h-8 cursor-pointer group">
+              <span
+                className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                  isOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"
+                }`}
+              ></span>
+              <span
+                className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                  isOpen ? "opacity-0" : "opacity-100"
+                }`}
+              ></span>
+              <span
+                className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+                  isOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-1"
+                }`}
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md border-t border-gray-800/50 transition-all duration-300 ease-in-out ${
+            isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-4"
+          }`}
+        >
+          <div className="px-4 py-6 space-y-4">
+            <NavLink
+              to="/showcase"
+              className="block px-4 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-code-orange/10 hover:to-code-green/10 hover:text-code-orange"
+              activeClassName="text-code-orange bg-gradient-to-r from-code-orange/10 to-code-green/10"
+              exact
+              onClick={() => {
+                handleNavLinkClick("#showcase");
+                setIsOpen(false);
+              }}
+            >
+              Showcase
+            </NavLink>
+            
+            <NavLink
+              to="/#contact-us"
+              className="block px-4 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-code-orange/10 hover:to-code-green/10 hover:text-code-orange"
+              activeClassName="text-code-orange bg-gradient-to-r from-code-orange/10 to-code-green/10"
+              onClick={() => {
+                handleNavLinkClick("#contact-us");
+                setIsOpen(false);
+              }}
+            >
+              Contact Us
+            </NavLink>
+
+            <NavLink
+              to="/#contact-us"
+              className="block px-4 py-3 bg-gradient-to-r from-code-green to-code-blue text-black font-bold rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-code-green/25"
+              onClick={() => {
+                handleNavLinkClick("#contact-us");
+                setIsOpen(false);
+              }}
+            >
+              Get Started
+            </NavLink>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

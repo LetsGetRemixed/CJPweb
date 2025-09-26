@@ -7,6 +7,8 @@ import {
   FaMobileAlt,
   FaRocket,
   FaHandsHelping,
+  
+  FaArrowRight,
 } from "react-icons/fa";
 import useScrollToHash from "./useScrollToHash";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -91,225 +93,323 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-background-dark text-white font-code">
       <Navbar />
-    <div className="min-h-screen bg-background-dark pt-8 font-code text-white">
-            <div className="w-full bg-background-dark px-4 py-12 text-center md:px-8">
-        <img
-          src="imagelogo2.png"
-          alt="Company Logo"
-          className="mx-auto mb-6 h-32 w-32 md:h-72 md:w-72"
-        />
-        <h1 className="mb-4 font-code text-4xl text-white md:text-5xl pb-5">
-          Let Us Develop Your Website Today!
-        </h1>
-        <p className="mb-2 border-b-4 pb-10 text-center font-code text-xl md:text-2xl">
-          <span className="text-code-orange">Coding</span>
-          <span className="text-code-blue"> Digital Excellence</span>,
-          <span className="text-code-orange"> One Line </span>
-          at a<span className="text-code-green"> Time</span>.
-        </p>
-        <button
-  onClick={() => navigate("/showcase")}
-  className="mt-6 rounded-full bg-code-orange px-6 py-3 text-lg font-semibold text-white transition duration-300 hover:bg-code-green"
->
-  View Our Showcase
-</button>
-              </div>
-
-      <div className="container mx-auto flex flex-col items-start justify-between px-4 pb-10 md:mt-16 md:flex-row">
-        <div className="relative my-4 flex w-full rounded-lg bg-background-dark p-6 md:my-0 md:w-1/2 md:pt-8">
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-10">
-            <div className="animate-scroll whitespace-pre text-center text-lg leading-relaxed text-code-green">
-              {`function exampleFunction() {
-    const message = "Hello, World!";
-    console.log(message);
-}
-
-exampleFunction();
-
-const add = (a, b) => a + b;
-console.log(add(5, 3));
-
-for (let i = 0; i < 10; i++) {
-    console.log(i);
-}
-
-if (true) {
-    console.log("This is true");
-}
-
-while (false) {
-    console.log("This will never log");
-}
-exampleFunction();
-
-const add = (a, b) => a + b;
-console.log(add(5, 3));
-
-for (let i = 0; i < 10; i++) {
-    console.log(i);
-}
-
-if (true) {
-    console.log("This is true");}`}
+      
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/banner.jpg)' }}
+        ></div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-code-orange/30 via-transparent to-code-blue/30"></div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="flex items-center justify-center mb-8 group">
+            <div className="relative">
+              <img
+                src="imagelogo2.png"
+                alt="Company Logo"
+                className="h-24 w-24 md:h-32 md:w-32 transition-all duration-300 group-hover:rotate-12"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-code-orange/20 to-code-green/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
-          <section className="relative z-10 w-full">
-            <h2 className="mb-6 text-center font-code text-3xl text-code-orange">
-              <span>Why Choose</span>
-              <br />
-              <span className="text-code-blue">CJP Web Development? </span>
-            </h2>
-            <ul className="space-y-6 text-center">
-              <li className="flex flex-col items-center text-lg">
-                <FaPaintBrush className="mb-2 animate-bounce text-6xl text-code-orange md:text-4xl" />
-                <span className="pb-5 font-heading text-2xl text-code-green">
-                  Custom Designs:
-                </span>
-                <span>
-                  We bring your vision to life with bespoke designs that stand
-                  out.
-                </span>
-              </li>
-              <li className="flex flex-col items-center text-lg">
-                <FaMobileAlt className="mb-2 animate-pulse text-6xl text-code-green md:text-4xl" />
-                <span className="pb-5 font-heading text-2xl text-code-blue">
-                  Responsive & Mobile-Friendly:
-                </span>
-                <span>
-                  Your site will look great on any device, ensuring a seamless
-                  experience for your audience.
-                </span>
-              </li>
-              <li className="flex flex-col items-center text-lg">
-                <FaRocket className="mb-2 animate-bounce text-6xl text-code-blue md:text-4xl" />
-                <span className="pb-5 font-heading text-2xl text-code-orange">
-                  Fast Turnaround:
-                </span>
-                <span>
-                  We respect your time and deliver high-quality websites
-                  promptly.
-                </span>
-              </li>
-              <li className="flex flex-col items-center text-lg">
-                <FaHandsHelping className="mb-2 animate-pulse text-6xl text-code-orange md:text-4xl" />
-                <span className="pb-5 font-heading text-2xl text-code-green">
-                  Ongoing Support:
-                </span>
-                <span>
-                  From updates to troubleshooting, we’re here to help long after
-                  your site goes live.
-                </span>
-              </li>
-            </ul>
-          </section>
-        </div>
-
-        <div
-          id="contact-us"
-          className="my-4 w-full rounded-lg bg-gray-900 p-6 shadow-lg md:my-0 md:w-1/2 md:pt-8"
-        >
-          <footer>
-            <form
-              className="flex flex-col items-center"
-              onSubmit={handleSubmit}
+          
+          <h1 
+            className="text-5xl md:text-7xl font-bold mb-6"
+            style={{ 
+              textShadow: '0 0 30px rgba(0,0,0,0.8), 0 0 60px rgba(0,0,0,0.6), 0 0 90px rgba(0,0,0,0.4)',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.8))'
+            }}
+          >
+            <span className="bg-gradient-to-r from-code-orange font-code via-code-green to-code-blue bg-clip-text text-transparent">
+              Let Us Develop Your Website Today!
+            </span>
+          </h1>
+          
+          <p 
+            className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-semibold"
+            style={{ 
+              textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.7), 0 8px 16px rgba(0,0,0,0.5)',
+              filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))'
+            }}
+          >
+            <span className="text-code-orange">Coding</span> Digital Excellence, 
+            <span className="text-code-blue"> One Line</span> at a 
+            <span className="text-code-green"> Time</span>.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => navigate("/showcase")}
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-code-green to-code-blue text-black px-8 py-4 text-lg font-bold rounded-xl hover:shadow-2xl hover:shadow-code-green/25 transition-all duration-300 transform hover:scale-105"
             >
-              <h2 className="mb-4 font-heading text-2xl font-bold text-code-orange">
-                Contact Us
-              </h2>
-              <h3 className="mb-4 text-center font-heading text-xl text-white">
-                Send us a <span className="text-code-blue">message</span>{" "}
-                regarding your{" "}
-                <span className="text-code-orange">desired project</span> and we
-                will reach out to you{" "}
-                <span className="text-code-green">soon </span> for a{" "}
-                <span className="text-code-green">consultation</span>!
-              </h3>
-              <label htmlFor="name" className="mb-2 w-full max-w-lg text-left">
-                Name:
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                placeholder="Chuck Norris"
-                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
-              />
-              <label htmlFor="email" className="mb-2 w-full max-w-lg text-left">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="example@email.com"
-                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
-              />
-              <label
-                htmlFor="subject"
-                className="mb-2 w-full max-w-lg text-left"
-              >
-                Subject:
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                required
-                placeholder="Subject for the email"
-                
-                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
-              />
-              <label
-                htmlFor="message"
-                className="mb-2 w-full max-w-lg text-left"
-              >
-                Message:
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-                placeholder="Describe in detail the project you would like."
-                className="mb-4 w-full max-w-lg rounded border-2 border-code-orange p-2 text-gray-900"
-              />
-              <div className="mb-4 w-full max-w-lg">
-                <ReCAPTCHA
-                  sitekey='6LdYtZMqAAAAAHTxn9W5HuNRp96TgXFuo79CCLeH' // Replace with your reCAPTCHA site key
-                  onChange={handleCaptchaChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="rounded-full bg-code-orange px-4 py-2 text-white transition-colors hover:bg-green-500 md:pl-10 md:pr-10"
-              >
-                Send
-              </button>
-            </form>
-            {feedbackMessage && (
-              <div
-                className={`mt-4 rounded p-4 ${feedbackClass === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}
-              >
-                {feedbackMessage}
-              </div>
-            )}
-          </footer>
+              <span>View Our Showcase</span>
+              <FaArrowRight className="w-5 h-5" />
+            </button>
+            <a
+              href="#contact-us"
+              className="inline-flex items-center space-x-2 border-2 border-code-orange text-code-orange px-8 py-4 text-lg font-bold rounded-xl hover:bg-code-orange hover:text-black transition-all duration-300"
+            >
+              <span>Get Started</span>
+              <FaRocket className="w-5 h-5" />
+            </a>
+          </div>
         </div>
-      </div>
-         <Footer></Footer>
-    </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-gray-900/40 via-gray-800/30 to-gray-900/40 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-bold text-code-orange mb-2 group-hover:scale-110 transition-transform duration-300">
+                200K+
+              </div>
+              <div className="text-gray-300">Peak Client Visits</div>
+            </div>
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-bold text-code-green mb-2 group-hover:scale-110 transition-transform duration-300">
+                110%
+              </div>
+              <div className="text-gray-300">Client Satisfaction</div>
+            </div>
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-bold text-code-blue mb-2 group-hover:scale-110 transition-transform duration-300">
+                24/7
+              </div>
+              <div className="text-gray-300">Support Available</div>
+            </div>
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-bold text-code-orange mb-2 group-hover:scale-110 transition-transform duration-300">
+                5+
+              </div>
+              <div className="text-gray-300">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gradient-to-br from-background-dark via-gray-900/50 to-background-dark relative overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/loginbackground.webp)' }}
+        ></div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-code-orange/10 via-transparent to-code-blue/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-code-green/5 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              style={{ 
+                textShadow: '0 0 30px rgba(0,0,0,0.8), 0 0 60px rgba(0,0,0,0.6), 0 0 90px rgba(0,0,0,0.4)',
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.8))'
+              }}
+            >
+              <span className="bg-gradient-to-r from-code-orange via-code-green font-code to-code-blue bg-clip-text text-transparent">
+                Why Choose CJP Web Development?
+              </span>
+            </h2>
+            <p 
+              className="text-xl text-white max-w-3xl mx-auto font-semibold"
+              style={{ 
+                textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.7), 0 8px 16px rgba(0,0,0,0.5)',
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))'
+              }}
+            >
+              We deliver exceptional web solutions that drive results and exceed expectations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-code-orange transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-code-orange/20">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-code-orange to-code-green rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <FaPaintBrush className="text-2xl text-black" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Custom Designs</h3>
+                <p className="text-gray-300">
+                  We bring your vision to life with bespoke designs that stand out from the competition.
+                </p>
+              </div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-code-green transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-code-green/20">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-code-green to-code-blue rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <FaMobileAlt className="text-2xl text-black" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Responsive Design</h3>
+                <p className="text-gray-300">
+                  Your site will look perfect on any device, ensuring a seamless experience for all users.
+                </p>
+              </div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-code-blue transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-code-blue/20">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-code-blue to-code-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <FaRocket className="text-2xl text-black" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Fast Turnaround</h3>
+                <p className="text-gray-300">
+                  We respect your time and deliver high-quality websites promptly without compromising quality.
+                </p>
+              </div>
+            </div>
+
+            <div className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-code-orange transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-code-orange/20">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-code-orange to-code-green rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <FaHandsHelping className="text-2xl text-black" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Ongoing Support</h3>
+                <p className="text-gray-300">
+                  From updates to troubleshooting, we're here to help long after your site goes live.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* View Projects Button */}
+          <div className="text-center mt-12">
+            <button
+              onClick={() => navigate("/showcase")}
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-code-orange to-code-green text-black px-8 py-4 text-lg font-bold rounded-xl hover:shadow-2xl hover:shadow-code-orange/25 transition-all duration-300 transform hover:scale-105"
+            >
+              <span>View Our Projects</span>
+              <FaArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact-us" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-code-orange/5 via-code-green/5 to-code-blue/5"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-code-orange via-code-green to-code-blue font-code bg-clip-text text-transparent">
+                  Ready to Get Started?
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Send us a message about your project and we'll reach out for a consultation!
+              </p>
+            </div>
+
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      placeholder="Your full name"
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-code-green focus:ring-2 focus:ring-code-green/20 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="your.email@example.com"
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-code-green focus:ring-2 focus:ring-code-green/20 transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    required
+                    placeholder="What's this about?"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-code-green focus:ring-2 focus:ring-code-green/20 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    placeholder="Tell us about your project in detail..."
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-code-green focus:ring-2 focus:ring-code-green/20 transition-all resize-none"
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey='6LdYtZMqAAAAAHTxn9W5HuNRp96TgXFuo79CCLeH'
+                    onChange={handleCaptchaChange}
+                  />
+                </div>
+
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center space-x-2 bg-gradient-to-r from-code-green to-code-blue text-black px-8 py-4 text-lg font-bold rounded-xl hover:shadow-2xl hover:shadow-code-green/25 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <span>Send Message</span>
+                    <FaArrowRight className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {feedbackMessage && (
+                  <div className={`mt-6 p-4 rounded-lg text-center ${
+                    feedbackClass === "success" 
+                      ? "bg-green-500/20 text-green-400 border border-green-500/30" 
+                      : "bg-red-500/20 text-red-400 border border-red-500/30"
+                  }`}>
+                    {feedbackMessage}
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,10 @@ const showcaseData = [
       description: "A fully functional ecommerce website for selling products for Bold Hair Co. This website features purchases, subscriptions, and a full admin dashboard for managing their brand.",
       image: '/images/BoldResponsive.png',
       link: "https://boldhairco.com",
+      category: "E-commerce",
+      tags: ["React", "E-commerce", "Admin Dashboard", "Subscriptions"],
+      featured: true,
+     
     },
     {
       id: 2,
@@ -12,6 +16,10 @@ const showcaseData = [
       description: "A beautiful and responsive site for the Trestleworks Team. This site features a home, about, and contact page, as well as a fully responsive design.",
       image: '/images/trestleworks.png',
       link: "https://tw-hq.com",
+      category: "Corporate",
+      tags: ["React", "Responsive", "Corporate", "Multi-page"],
+      featured: true,
+      
     },
     {
       id: 3,
@@ -19,55 +27,74 @@ const showcaseData = [
       description: "A site for media and marketing, built to capture leads, manage customers,and showcase their services.",
       image: '/images/boldmediaresponsive.png',
       link: "https://boldmovesinc.com",
+      category: "Corporate",
+      tags: ["Lead Generation", "Marketing", "Customer Management"],
+      featured: true,
+      
     },
     {
-      id: 3,
+      id: 4,
       name: "Southern Technologist Group",
       description: "A fully functional website for the Southern Technologist Group. This site features a home, about, and contact page, as well as a fully responsive design.",
       image: '/images/southerntech.png',
       link: "https://southerntechnologistgroup.com",
+      category: "Corporate",
+      tags: ["React", "Responsive", "Corporate", "Multi-page"],
+      featured: false,
+      
     },
     {
-      id: 3,
+      id: 5,
       name: "Alyssa Gonzalez Portfolio",
       description: "A beautiful portfolio for a communications major capturing skillset, work, and contact information",
       image: '/images/alyssaportfolio.png',
       link: "https://alyssajgonzalez.com",
+      category: "Portfolio",
+      tags: ["Portfolio", "Personal Brand", "Communications"],
+      featured: false,
+     
     },
     {
-      id: 4,
+      id: 6,
       name: "Central Hills Lawn Service",
       description: "A fully functional website for Central Hills Lawn Service. This site features a home, about, and contact page, as well as a fully responsive design.",
       image: '/images/centralhills.png',
       link: "https://centralhillslawnservices.com",
+      category: "Service",
+      tags: ["Service Business", "Local Business", "Responsive"],
+      featured: false,
     },
     {
-      id: 4,
+      id: 7,
       name: "Supra Portfolio",
       description: "A beautiful and responsive portfolio website for showcasing a Supra. Complete with a viewable gallery, Instagram Plug, and Responsive designs ",
       image: '/images/ZionsSupraResponsive.png',
       link: "https://zionssupra.web.app",
+      category: "Portfolio",
+      tags: ["Portfolio", "Gallery", "Instagram Integration", "Automotive"],
+      featured: false,
     },
     {
-      id: 5,
+      id: 8,
       name: "Colby Person Portfolio",
       description: "An impressive portfolio website featuring a projects gallery, Resume download, Bio, and fully resposive design.",
       image: '/images/ColbyPersonResponsive.png',
       link: "https://colbyperson.com",
+      category: "Portfolio",
+      tags: ["Portfolio", "Developer", "Resume", "Projects Gallery"],
+      featured: false,
     },
     {
-      id: 6,
+      id: 9,
       name: "9 Commerce",
       description: "A fully functional ecommerce website for selling products for 9 Commerce. This website features purchases, Account Management, and a full admin dashboard for managing their brand.",
       image: '/images/9Commerce.png',
       link: "https://commerce-app-tan.vercel.app",
+      category: "E-commerce",
+      tags: ["React", "E-commerce", "Account Management", "Admin Dashboard"],
+      featured: false,
     },
-    {
-        id: 7,
-        name: "More to Come!",
-        description: "We are working hard everyday to create new and exciting projects. Get in touch with us to get your dream built today!",
-        image: "/images/loginbackground.webp",
-      },
+    
   ];
   
   export default showcaseData;
