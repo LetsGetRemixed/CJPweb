@@ -4,6 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -33,15 +34,26 @@ function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleModalState = (event) => {
+      setIsModalOpen(event.detail.isOpen);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('modalStateChange', handleModalState);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('modalStateChange', handleModalState);
+    };
   }, []);
 
   return (
     <nav className={`fixed left-0 top-0 z-[1000] w-full transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800/50' 
-        : 'bg-transparent'
+      isModalOpen 
+        ? 'transform -translate-y-full opacity-0' 
+        : isScrolled 
+          ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800/50' 
+          : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">

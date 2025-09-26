@@ -38,11 +38,15 @@ const Showcase = () => {
   const handleImageClick = (image, project) => {
     setEnlargedImage(image);
     setSelectedProject(project);
+    // Dispatch event to hide navbar
+    window.dispatchEvent(new CustomEvent('modalStateChange', { detail: { isOpen: true } }));
   };
 
   const handleClose = () => {
     setEnlargedImage(null);
     setSelectedProject(null);
+    // Dispatch event to show navbar
+    window.dispatchEvent(new CustomEvent('modalStateChange', { detail: { isOpen: false } }));
   };
 
   const ProjectCard = ({ project, isFeatured = false }) => (
