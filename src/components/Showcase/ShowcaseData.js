@@ -6,9 +6,19 @@ const showcaseData = [
       image: '/images/BoldResponsive.png',
       link: "https://boldhairco.com",
       category: "E-commerce",
-      tags: ["React", "E-commerce", "Admin Dashboard", "Subscriptions"],
+      tags: ["E-commerce", "Admin Dashboard", "Subscriptions"],
       featured: true,
      
+    },
+    {
+      id: 2,
+      name: "Best Brew Essentials",
+      description: "An amazon affiliate site for coffee lovers. This site features products, tutorial modules, a game, admin dashboard, and much more.",
+      image: '/images/bestbrewessentials.png',
+      link: "https://bestbrewessentials.com",
+      category: "E-commerce",
+      tags: ["E-commerce", "Admin Dashboard", "Tutorial Modules", "Game"],
+      featured: true,
     },
     {
       id: 2,
